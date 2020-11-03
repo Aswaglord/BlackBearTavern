@@ -1,0 +1,166 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.label{
+  color: white;
+  font-size: 32px;
+
+}
+.welcomemanager{
+  color: white;
+  font-size: 128px;
+}
+.welcomeemployee{
+  color: brown;
+  font-size: 64px;
+}
+
+
+.textbox{
+  height:25px;
+  font-size:14pt;
+  
+}
+
+.button {
+  background-color: brown;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 10px 15px;
+  
+}
+.button2 {
+  background-color: cyan;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 0 15px; 
+}
+.center {
+  margin: auto;
+}
+
+.backgroundimage {
+  background-image: url("./images/Blackbeartavern.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+}
+
+.backgroundimage2 {
+  background-image: url("./images/tentpic.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+}
+.backgroundimage3 {
+  background-image: url("./images/blackbear.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.backgroundimage4 {
+  background-image: url("./images/outdoors.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.Parent{
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+form{
+  height: auto;
+}
+
+.flexcolumn{
+  flex-direction: column;
+}
+.whitebackground{
+  background-color: rgba(255,255,255,.7);
+  padding: 20px;
+}
+.orderedlist{
+  color: brown;
+  font-size: 24px;
+}
+.logoutbutton{
+  background-color: brown;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 64px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  margin: 0 15px; 
+}
+.logoutbutton1{
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 15px 15px;
+
+}
+.flexrow{
+  display: flex;
+  flex-direction: row;
+}
+
+.width50{
+  width: 50px;
+}
+.width100{
+  width: 100px;
+}
+.width150{
+  width: 150px;
+}
+.width200{
+  width: 200px;
+}
+.border{
+  border: black 1px solid;
+  margin: 0;
+}
+
+.buttonmargin{
+  margin: 15px;
+}
+
+.textboxalign{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.center1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

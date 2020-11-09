@@ -1,20 +1,18 @@
 
 
-function Employee() {
+function Employee(props) {
+
+
 
     return (
-        <div className="Parent backgroundimage3 flexcolumn">
-            <div className="whitebackground">
-                <h1 className="welcomeemployee">WELCOME: EMPLOYEE</h1>
-                <ol className="orderedlist">
-                    <li>Task 1</li>
-                    <li>Task 2</li>
-                    <li>Task 3</li>
-                </ol>
-                <button className="logoutbutton">LOGOUT</button>
-            </div>
+
+        <div className="flexrow">
+            <p className="width100 border">{props.id}</p>
+            <p className="width100 border">{props.lName}</p>
+            <p className="width100 border">{props.fName}</p>
+            <p className="width100 border">{props.position}</p>
         </div>
-    );
+    )
 }
 
-export default Employee;
+export default Employee

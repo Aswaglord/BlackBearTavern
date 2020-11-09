@@ -1,10 +1,10 @@
 
 
-function AddTasks() {
+function AddTasks(props) {
 
     return (
-        <div>
-            <h1 className="label">ADD TASK</h1>
+        <div className="Parent backgroundimage5 flexcolumn">
+            <h1 className="h1">ADD TASK</h1>
             <div>
                 <div className="textboxalign">
                     <label className="label">EMPLOYEE ID:</label>
@@ -18,7 +18,9 @@ function AddTasks() {
                     <label className="label">DESCRIPTION:</label>
                     <input className="textbox" type="text" name="description" />
                 </div>
-                <button className="button2 buttonmargin">ADD</button>
+                <button className="logoutbutton1">ADD</button>
+                <button onClick={() => props.navigation("modify tasks")} className="logoutbutton1">RETURN</button>              
+                <button className="button2 logoutbuttoncorner">LOGOUT</button>
             </div>
         </div>
 

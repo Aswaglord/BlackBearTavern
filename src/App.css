@@ -14,8 +14,11 @@
   font-size: 128px;
 }
 .welcomeemployee{
-  color: brown;
-  font-size: 64px;
+  color:black;
+  font-size: 128px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }
 
 
@@ -26,7 +29,7 @@
 }
 
 .button {
-  background-color: brown;
+  background-color: grey;
   border: none;
   border-radius: 15px;
   color: white;
@@ -39,9 +42,9 @@
   
 }
 .button2 {
-  background-color: cyan;
+  background-color: gray;
   border: none;
-  border-radius: 15px;
+  border-radius:15px;
   color: white;
   padding: 15px 64px;
   text-align: center;
@@ -85,6 +88,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  position: relative;
 }
 
 form{
@@ -99,7 +103,7 @@ form{
   padding: 20px;
 }
 .orderedlist{
-  color: brown;
+  color: black;
   font-size: 24px;
 }
 .logoutbutton{
@@ -123,7 +127,7 @@ form{
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 24px;
   margin: 15px 15px;
 
 }
@@ -133,20 +137,35 @@ form{
 }
 
 .width50{
-  width: 50px;
+  width: 100pxpx;
+  font-size: 24px;
 }
 .width100{
-  width: 100px;
+  width: 150px;
+  font-size: 24px;
 }
 .width150{
-  width: 150px;
+  width: 200px;
+  font-size: 24px;
+  
 }
 .width200{
-  width: 200px;
+  width: 300px;
+  font-size: 24px;
 }
 .border{
   border: black 1px solid;
   margin: 0;
+  
+}
+.borderred{
+  border: red 5px solid;
+}
+.borderblue{
+  border: blue 5px solid;
+}
+.bordergreen{
+  border: green 5px solid;
 }
 
 .buttonmargin{
@@ -164,3 +183,56 @@ form{
   justify-content: center;
   flex-direction: column;
 }
+
+.headingemployee{
+  font-size: 64px;
+}
+
+.backgroundimage5{
+  background-image: url("./images/orange.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.backgroundimage6{
+  background-image: url("./images/blue.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.h1{
+  color: black;
+  font-size: 64px;
+}
+
+.logoutbuttoncorner {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+
+.backgroundimage7{
+  background-image: url("./images/mountain.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+
+}
+.logo{
+  height: 400px;
+  width: auto;
+  margin-bottom: 100px;
+}
+.forgotbutton{
+  background-color: grey;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 15px; 
+}
+

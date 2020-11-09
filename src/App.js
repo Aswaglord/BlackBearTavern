@@ -1,46 +1,43 @@
 import './App.css';
 import Login from "./components/Login"
 import Manager from "./components/Manager"
-import Employee from "./components/Employee"
+import EmployeePage from "./components/EmployeePage"
 import CreateEmployee from "./components/CreateEmployee"
 import CurrentEmployees from "./components/CurrentEmployees"
 import ModifyTasks from "./components/ModifyTasks"
-import { useState } from "react"
-import AddTasks from './components/AddTask';
+import { useState, useEffect } from "react"
+import AddTasks from "./components/AddTask"
+import { getEmployees } from "./components/localStorage"
+
 
 function App() {
+  useEffect(() => {
+    let localEmployees = getEmployees()
+    setEmployees(localEmployees)
+  }, [])
   const [creds, setCreds] = useState({ username: null, password: null })
   const [loggedIn, setLoggedIn] = useState(false)
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState("manager")
 
-  const next = () => {
-    if (page !== 5) {
-      setPage(page + 1)
-    } else {
-      setPage(0)
-    }
+  const [employees, setEmployees] = useState()
+
+  const navigation = (page) => {
+    setPage(page)
   }
 
-  const prev = () => {
-    if (page !== 0) {
-      setPage(page - 1)
-    } else {
-      setPage(5)
-    }
-  }
 
   return (
     <div className="App">
-      { page == 0 ? <Login /> : null }
-      { page == 1 ? <Manager /> : null }
-      { page == 2 ? <Employee /> : null }
-      { page == 3 ? <CreateEmployee /> : null }
-      { page == 4 ? <CurrentEmployees /> : null }
-      { page == 5 ? <ModifyTasks /> : null }
+      { page == "login" ? <Login navigation={navigation} /> : null}
+      { page == "manager" ? <Manager navigation={navigation} /> : null}
+      { page == "employee page" ? <EmployeePage navigation={navigation} /> : null}
+      { page == "create employee" ? <CreateEmployee navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
+      { page == "current employees" ? <CurrentEmployees navigation={navigation} employees={employees} /> : null}
+      { page == "modify tasks" ? <ModifyTasks navigation={navigation} /> : null}
+      { page == "add task" ? <AddTasks navigation={navigation} /> : null}
 
-    <button onClick={() => prev()}>prev</button>
-    <button onClick={() => next()}>next</button>
-    
+
+      { }
 
     </div>
   );

@@ -18,13 +18,17 @@ function App() {
 
   const [employees, setEmployees] = useState([])
 
+  var data = JSON.stringify({"username":"thedragonslayer","password":"password"})
+
   const getEmployees = () => {
     var config = {
       method: 'get',
       url: 'https://black-bear-back-end.herokuapp.com/api/users',
       headers: {
         'Content-Type': 'application/json',
+        'Cookie': document.cookie
       },
+      data: data
     };
     axios(config)
     .then(function (response) {

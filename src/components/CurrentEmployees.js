@@ -1,11 +1,11 @@
 
-import react, { useEffect } from "react"
+import { useEffect } from "react"
 
 function CurrentEmployees(props) {
 
     useEffect(() => {
         props.getEmployees()
-    }, [])
+    }, [props])
 
 
     return (

@@ -47,7 +47,7 @@ function Login(props) {
             <form>
                 <div className="center1">
                     <div>
-                        <img src={logo} className="logo"></img>
+                        <img src={logo} alt="logo" className="logo"></img>
                     </div>
                     <div>
                         <div className="textboxalign">

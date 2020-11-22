@@ -22,8 +22,9 @@ function App() {
     var config = {
       method: 'get',
       url: 'https://black-bear-back-end.herokuapp.com/api/users',
-      headers: { 
-        'Content-Type': 'application/json', 
+      headers: {
+        'Cookie' : document.cookie,
+        'Content-Type': 'application/json',
       },
     };
     axios(config)

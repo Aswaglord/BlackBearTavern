@@ -1,6 +1,12 @@
 import Employee from "./Employee"
+import react, { useEffect } from "react"
 
 function CurrentEmployees(props) {
+
+    useEffect(() => {
+        props.getEmployees()
+    }, [])
+
 
     return (
         <div className="Parent backgroundimage5 flexcolumn ">
@@ -13,9 +19,9 @@ function CurrentEmployees(props) {
                         <p className="width100 border">FIRST NAME:</p>
                         <p className="width100 border">POSITION:</p>
                     </div>
-                {props.employees.map(employee => {
+                {/* {props.employees.map(employee => {
                     return <Employee id={employee.id} lName={employee.lName} fName={employee.fName} position={employee.position} />
-                })}
+                })} */}
                 </div>
                 <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>
                 

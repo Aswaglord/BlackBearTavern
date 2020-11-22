@@ -1,4 +1,5 @@
 import './App.css';
+import axios from "axios"
 import Login from "./components/Login"
 import Manager from "./components/Manager"
 import EmployeePage from "./components/EmployeePage"
@@ -7,19 +8,37 @@ import CurrentEmployees from "./components/CurrentEmployees"
 import ModifyTasks from "./components/ModifyTasks"
 import { useState, useEffect } from "react"
 import AddTasks from "./components/AddTask"
-import { getEmployees } from "./components/localStorage"
+
 
 
 function App() {
-  useEffect(() => {
-    let localEmployees = getEmployees()
-    setEmployees(localEmployees)
-  }, [])
+  // useEffect(() => {
+  //   getEmployees()
+  // }, [])
   const [creds, setCreds] = useState({ username: null, password: null })
   const [loggedIn, setLoggedIn] = useState(false)
   const [page, setPage] = useState("manager")
 
-  const [employees, setEmployees] = useState()
+  const [employees, setEmployees] = ([])
+
+  const getEmployees = () => {
+    var config = {
+      method: 'get',
+      url: 'https://black-bear-back-end.herokuapp.com/api/users',
+      headers: { 
+        'Content-Type': 'application/json', 
+      },
+    };
+    axios(config)
+    .then(function (response) {
+      console.log(response.data);
+      setEmployees(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
 
   const navigation = (page) => {
     setPage(page)
@@ -28,13 +47,16 @@ function App() {
 
   return (
     <div className="App">
-      { page == "login" ? <Login navigation={navigation} /> : null}
-      { page == "manager" ? <Manager navigation={navigation} /> : null}
-      { page == "employee page" ? <EmployeePage navigation={navigation} /> : null}
-      { page == "create employee" ? <CreateEmployee navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
-      { page == "current employees" ? <CurrentEmployees navigation={navigation} employees={employees} /> : null}
-      { page == "modify tasks" ? <ModifyTasks navigation={navigation} /> : null}
-      { page == "add task" ? <AddTasks navigation={navigation} /> : null}
+
+      { !loggedIn ? <Login setLoggedIn={setLoggedIn} navigation={navigation} /> : null}
+      
+      
+      { loggedIn && page === "manager" ? <Manager navigation={navigation} /> : null}
+      { loggedIn && page === "employee page" ? <EmployeePage navigation={navigation} /> : null}
+      { loggedIn && page === "create employee" ? <CreateEmployee navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
+      { loggedIn && page === "current employees" ? <CurrentEmployees navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
+      { loggedIn && page === "modify tasks" ? <ModifyTasks navigation={navigation} /> : null}
+      { loggedIn && page === "add task" ? <AddTasks navigation={navigation} /> : null}
 
 
       { }

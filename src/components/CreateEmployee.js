@@ -1,12 +1,10 @@
 import React, { useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
 import { setEmployees } from "./localStorage";
 
 function CreateEmployee(props) {
 
 
     const [newEmployee, setNewEmployee] = useState({
-        id: uuidv4(),
         fName: "",
         lName: "",
         position: ""
@@ -18,15 +16,8 @@ function CreateEmployee(props) {
         console.log(newEmployee)
     }
 
-    const createNewEmployee =() => {
-        props.setEmployees([...props.employees, newEmployee])
-        setEmployees([...props.employees, newEmployee])
-        setNewEmployee({
-            id: 10,
-            fName: "",
-            lName: "",
-            position: ""
-        })
+    const createNewEmployee = () => {
+
     }
 
     return (

@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { setEmployees } from "./localStorage";
 
 function CreateEmployee(props) {
 

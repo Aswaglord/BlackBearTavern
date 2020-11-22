@@ -6,20 +6,17 @@ import EmployeePage from "./components/EmployeePage"
 import CreateEmployee from "./components/CreateEmployee"
 import CurrentEmployees from "./components/CurrentEmployees"
 import ModifyTasks from "./components/ModifyTasks"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import AddTasks from "./components/AddTask"
 
 
 
 function App() {
-  // useEffect(() => {
-  //   getEmployees()
-  // }, [])
-  const [creds, setCreds] = useState({ username: null, password: null })
+
   const [loggedIn, setLoggedIn] = useState(false)
   const [page, setPage] = useState("manager")
 
-  const [employees, setEmployees] = ([])
+  const [employees, setEmployees] = useState([])
 
   const getEmployees = () => {
     var config = {

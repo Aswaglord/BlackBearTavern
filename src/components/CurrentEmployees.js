@@ -1,4 +1,4 @@
-import Employee from "./Employee"
+
 import react, { useEffect } from "react"
 
 function CurrentEmployees(props) {

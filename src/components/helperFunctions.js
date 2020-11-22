@@ -13,10 +13,11 @@ export const login = (credentials) => {
       data: credentials
       };
       axios.defaults.withCredentials = true;
-      axios.get('/url',
+      axios.post('/url',
       axiosConfig)
       .then((res) => {
-      // Some result here
+        console.log("Hit")
+        console.log(res)
       })
       .catch((err) => {
       console.log(':(');
@@ -35,10 +36,8 @@ export const login = (credentials) => {
     //   axios(config)
     //   .then(function (response) {
     //     console.log(response);
-    //     return true
     //   })
     //   .catch(function (error) {
     //     console.log(error);
-    //     return false
     //   });
 }

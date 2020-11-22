@@ -1,4 +1,3 @@
-const { default: AddTasks } = require("./AddTask");
 
 
 function ModifyTasks(props) {

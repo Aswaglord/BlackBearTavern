@@ -23,7 +23,6 @@ function App() {
       method: 'get',
       url: 'https://black-bear-back-end.herokuapp.com/api/users',
       headers: {
-        'Cookie' : document.cookie,
         'Content-Type': 'application/json',
       },
     };

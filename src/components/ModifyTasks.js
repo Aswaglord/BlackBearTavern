@@ -5,7 +5,7 @@ import Task from "./Task";
 function ModifyTasks(props) {
     useEffect(() => {
         props.getTasks()
-    },[null])
+    })
 
 
     return (

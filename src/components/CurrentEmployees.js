@@ -6,7 +6,7 @@ function CurrentEmployees(props) {
 
     useEffect(() => {
         props.getEmployees()
-    }, [null])
+    })
 
 
     return (

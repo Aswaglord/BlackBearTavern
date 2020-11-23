@@ -21,24 +21,46 @@ function Login(props) {
     const login = (credentials) => {
         credentials = JSON.stringify(credentials)
 
-        var config = {
-            method: 'post',
-            url: 'https://black-bear-back-end.herokuapp.com/api/login',
+        const axiosConfig = {
             headers: {
-                "withCredentials": "true",
-                'Content-Type': 'application/json'
+                'content-Type': 'application/json',
+                "Accept": "/",
+                "Cache-Control": "no-cache",
+                "Cookie": document.cookie
             },
+            credentials: "same-origin",
             data: credentials
         };
-
-        axios(config)
-            .then(function (response) {
-                console.log(response.headers);
+        axios.defaults.withCredentials = true;
+        axios.post('https://black-bear-back-end.herokuapp.com/api/login',
+            axiosConfig)
+            .then((res) => {
+                console.log(res)
                 props.setLoggedIn(true)
+
             })
-            .catch(function (error) {
-                setError("wrong username or password")
+            .catch((err) => {
+                console.log(':(');
             });
+
+        // var config = {
+        //     method: 'post',
+        //     url: 'https://black-bear-back-end.herokuapp.com/api/login',
+        //     headers: {
+        //         "withCredentials": "true",
+        //         'Content-Type': 'application/json'
+        //     },
+        //     data: credentials
+        // };
+
+        // axios(config)
+        //     .then(function (response) {
+        //         console.log(response.headers);
+        //         props.setLoggedIn(true)
+        //     })
+        //     .catch(function (error) {
+        //         setError("wrong username or password")
+        //     });
     }
 
     return (

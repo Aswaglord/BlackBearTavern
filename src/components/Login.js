@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios"
 import logo from "../images/logo.jpg"
-// import { login } from "./helperFunctions"
+const request = require('request');
 
 function Login(props) {
 
@@ -14,35 +14,11 @@ function Login(props) {
 
     const formSubmit = (e) => {
         e.preventDefault()
-        console.log(form)
-        login(form)
+        login()
     }
 
-    const login = (credentials) => {
-        credentials = JSON.stringify(credentials)
-
-        // const axiosConfig = {
-        //     headers: {
-        //         'content-Type': 'application/json',
-        //         "Accept": "/",
-        //         "Cache-Control": "no-cache",
-        //         "withCredentials": "true",
-        //     },
-        //     credentials: "same-origin",
-        //     data: credentials
-        // };
-        // axios.defaults.withCredentials = true;
-        // axios.post('https://black-bear-back-end.herokuapp.com/api/login',
-        //     axiosConfig)
-        //     .then((res) => {
-        //         console.log(res)
-        //         props.setLoggedIn(true)
-
-        //     })
-        //     .catch((err) => {
-        //         console.log(':(');
-        //         setError("wrong username or password")
-        //     });
+    const login = () => {
+        let credentials = JSON.stringify(form)
 
         var config = {
             method: 'post',
@@ -52,16 +28,17 @@ function Login(props) {
                 'Content-Type': 'application/json',
                 "Accept": "/",
                 "Cache-Control": "no-cache",
+                "Access-Control-Allow-Origin": "true"
             },
             data: credentials
         };
 
         axios(config)
             .then(function (response) {
-                console.log(response.headers);
+                console.log(response);
                 props.setLoggedIn(true)
             })
-            .catch(function (error) {
+            .catch(function (e) {
                 setError("wrong username or password")
             });
     }

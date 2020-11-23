@@ -1,6 +1,12 @@
+import { useEffect } from "react";
+import Task from "./Task";
 
 
 function ModifyTasks(props) {
+    useEffect(() => {
+        props.getTasks()
+    },[null])
+
 
     return (
         <div className="Parent backgroundimage5 flexcolumn">
@@ -8,28 +14,14 @@ function ModifyTasks(props) {
                 <h1 className="h1" >VIEW TASKS</h1>
                 <div>
                     <div className="flexrow">
-                        <p className="width150 border">TASK:</p>
-                        <p className="width200 border">DESCRIPTION:</p>
-                        <p className="width150 border">ASSIGNMENT</p>
-
+                        <p className="width150 border">ID:</p>
+                        <p className="width200 border">NAME:</p>
+                        <p className="width150 border">DESCRIPTION:</p>
+                        <p className="width150 border">USER ID:</p>
                     </div>
-                    <div className="flexrow">
-                        <p className="width150 border">Hand soaps</p>
-                        <p className="width200 border">Check hand soaps</p>
-                        <p className="width150 border">Gordon</p>
-
-                    </div>
-                    <div className="flexrow">
-                        <p className="width150 border">Paper Towels</p>
-                        <p className="width200 border">Check paper towels</p>
-                        <p className="width150 border">John</p>
-
-                    </div>
-                    <div className="flexrow">
-                        <p className="width150 border">Pig buckets</p>
-                        <p className="width200 border">Set up front</p>
-                        <p className="width150 border">Jane</p>
-                    </div>
+                    {props.tasks.map(task => {
+                    return <Task task={task} />
+                })}
                     <div>
                         <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>
                         <button onClick={() => props.navigation("add task")} className="logoutbutton1">ADD TASK</button>

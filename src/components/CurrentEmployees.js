@@ -1,11 +1,12 @@
 
 import { useEffect } from "react"
+import Employee from "./Employee"
 
 function CurrentEmployees(props) {
 
     useEffect(() => {
         props.getEmployees()
-    }, [props])
+    }, [null])
 
 
     return (
@@ -15,13 +16,14 @@ function CurrentEmployees(props) {
                 <div>
                     <div className="flexrow">
                         <p className="width100 border">ID:</p>
+                        <p className="width100 border">USERNAME:</p>
                         <p className="width100 border">LAST NAME:</p>
                         <p className="width100 border">FIRST NAME:</p>
                         <p className="width100 border">POSITION:</p>
                     </div>
-                {/* {props.employees.map(employee => {
-                    return <Employee id={employee.id} lName={employee.lName} fName={employee.fName} position={employee.position} />
-                })} */}
+                {props.employees.map(employee => {
+                    return <Employee person={employee} />
+                })}
                 </div>
                 <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>
                 

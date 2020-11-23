@@ -2,15 +2,14 @@
 
 function Employee(props) {
 
-
-
     return (
 
         <div className="flexrow">
-            <p className="width100 border">{props.id}</p>
-            <p className="width100 border">{props.lName}</p>
-            <p className="width100 border">{props.fName}</p>
-            <p className="width100 border">{props.position}</p>
+            <p className="width100 border">{props.person.id}</p>
+            <p className="width100 border">{props.person.username}</p>
+            <p className="width100 border">{props.person.last_name}</p>
+            <p className="width100 border">{props.person.first_name}</p>
+            <p className="width100 border">{props.person.position}</p>
         </div>
     )
 }

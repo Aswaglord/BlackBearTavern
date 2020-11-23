@@ -17,29 +17,10 @@ function App() {
   const [page, setPage] = useState("manager")
 
   const [employees, setEmployees] = useState([])
-
-  // var data = JSON.stringify({"username":"thedragonslayer","password":"password"})
+  const [tasks, setTasks] = useState([])
 
   const getEmployees = () => {
 
-    // const axiosConfig = {
-    //   headers: {
-    //   'content-Type': 'application/json',
-    //   "Accept": "/",
-    //   "Cache-Control": "no-cache",
-    //   "Cookie": document.cookie
-    //   },
-    //   credentials: "same-origin"
-    //   };
-    //   axios.defaults.withCredentials = true;
-    //   axios.get('https://black-bear-back-end.herokuapp.com/api/users',
-    //   axiosConfig)
-    //   .then((res) => {
-    //     console.log(res)
-    //   })
-    //   .catch((err) => {
-    //   console.log(':(');
-    //   });
     var config = {
       method: 'get',
       url: 'https://black-bear-back-end.herokuapp.com/api/users',
@@ -63,6 +44,27 @@ function App() {
     setPage(page)
   }
 
+  const getTasks = () => {
+
+    var config = {
+      method: 'get',
+      url: 'https://black-bear-back-end.herokuapp.com/api/tasks',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': document.cookie
+      },
+    };
+    axios(config)
+    .then(function (response) {
+      console.log(response.data);
+      setTasks(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  }
+
 
   return (
     <div className="App">
@@ -74,7 +76,7 @@ function App() {
       { loggedIn && page === "employee page" ? <EmployeePage navigation={navigation} /> : null}
       { loggedIn && page === "create employee" ? <CreateEmployee navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
       { loggedIn && page === "current employees" ? <CurrentEmployees navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
-      { loggedIn && page === "modify tasks" ? <ModifyTasks navigation={navigation} /> : null}
+      { loggedIn && page === "modify tasks" ? <ModifyTasks navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
       { loggedIn && page === "add task" ? <AddTasks navigation={navigation} /> : null}
 
 

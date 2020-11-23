@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios"
 import logo from "../images/logo.jpg"
-const request = require('request');
 
 function Login(props) {
 

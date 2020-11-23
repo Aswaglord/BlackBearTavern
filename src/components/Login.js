@@ -26,7 +26,7 @@ function Login(props) {
                 'content-Type': 'application/json',
                 "Accept": "/",
                 "Cache-Control": "no-cache",
-                "Cookie": document.cookie
+                "withCredentials": "true"
             },
             credentials: "same-origin",
             data: credentials

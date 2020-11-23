@@ -21,47 +21,49 @@ function Login(props) {
     const login = (credentials) => {
         credentials = JSON.stringify(credentials)
 
-        const axiosConfig = {
-            headers: {
-                'content-Type': 'application/json',
-                "Accept": "/",
-                "Cache-Control": "no-cache",
-                "withCredentials": "true"
-            },
-            credentials: "same-origin",
-            data: credentials
-        };
-        axios.defaults.withCredentials = true;
-        axios.post('https://black-bear-back-end.herokuapp.com/api/login',
-            axiosConfig)
-            .then((res) => {
-                console.log(res)
-                props.setLoggedIn(true)
-
-            })
-            .catch((err) => {
-                console.log(':(');
-                setError("wrong username or password")
-            });
-
-        // var config = {
-        //     method: 'post',
-        //     url: 'https://black-bear-back-end.herokuapp.com/api/login',
+        // const axiosConfig = {
         //     headers: {
+        //         'content-Type': 'application/json',
+        //         "Accept": "/",
+        //         "Cache-Control": "no-cache",
         //         "withCredentials": "true",
-        //         'Content-Type': 'application/json'
         //     },
+        //     credentials: "same-origin",
         //     data: credentials
         // };
-
-        // axios(config)
-        //     .then(function (response) {
-        //         console.log(response.headers);
+        // axios.defaults.withCredentials = true;
+        // axios.post('https://black-bear-back-end.herokuapp.com/api/login',
+        //     axiosConfig)
+        //     .then((res) => {
+        //         console.log(res)
         //         props.setLoggedIn(true)
+
         //     })
-        //     .catch(function (error) {
+        //     .catch((err) => {
+        //         console.log(':(');
         //         setError("wrong username or password")
         //     });
+
+        var config = {
+            method: 'post',
+            url: 'https://black-bear-back-end.herokuapp.com/api/login',
+            headers: {
+                "withCredentials": "true",
+                'Content-Type': 'application/json',
+                "Accept": "/",
+                "Cache-Control": "no-cache",
+            },
+            data: credentials
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(response.headers);
+                props.setLoggedIn(true)
+            })
+            .catch(function (error) {
+                setError("wrong username or password")
+            });
     }
 
     return (

@@ -41,6 +41,7 @@ function Login(props) {
             })
             .catch((err) => {
                 console.log(':(');
+                setError("wrong username or password")
             });
 
         // var config = {

@@ -39,6 +39,9 @@ function App() {
     });
 
   }
+  const logout = () => {
+    setLoggedIn(false);
+  }
 
   const navigation = (page) => {
     setPage(page)
@@ -72,12 +75,12 @@ function App() {
       { !loggedIn ? <Login setLoggedIn={setLoggedIn} navigation={navigation} /> : null}
       
       
-      { loggedIn && page === "manager" ? <Manager navigation={navigation} /> : null}
-      { loggedIn && page === "employee page" ? <EmployeePage navigation={navigation} /> : null}
-      { loggedIn && page === "create employee" ? <CreateEmployee navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
-      { loggedIn && page === "current employees" ? <CurrentEmployees navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
-      { loggedIn && page === "modify tasks" ? <ModifyTasks navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
-      { loggedIn && page === "add task" ? <AddTasks navigation={navigation} /> : null}
+      { loggedIn && page === "manager" ? <Manager logout={logout} navigation={navigation} /> : null}
+      { loggedIn && page === "employee page" ? <EmployeePage logout={logout} navigation={navigation} /> : null}
+      { loggedIn && page === "create employee" ? <CreateEmployee logout={logout} navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
+      { loggedIn && page === "current employees" ? <CurrentEmployees logout={logout} navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
+      { loggedIn && page === "modify tasks" ? <ModifyTasks logout={logout} navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
+      { loggedIn && page === "add task" ? <AddTasks logout={logout} navigation={navigation} /> : null}
 
 
       { }

@@ -27,7 +27,7 @@ function CurrentEmployees(props) {
                 </div>
                 <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>
                 
-                <button className="button2 logoutbuttoncorner">LOGOUT</button>
+                <button onClick={() => props.logout()} className="button2 logoutbuttoncorner">LOGOUT</button>
             </div>
         </div>
 

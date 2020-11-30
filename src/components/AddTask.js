@@ -55,7 +55,7 @@ function AddTasks(props) {
                 </div>
                 <button className="logoutbutton1" onClick={() => AddTasks()}>ADD</button>
                 <button onClick={() => props.navigation("modify tasks")} className="logoutbutton1">RETURN</button>
-                <button className="button2 logoutbuttoncorner">LOGOUT</button>
+                <button onClick={() => props.logout()} className="button2 logoutbuttoncorner">LOGOUT</button>
             </div>
         </div>
 

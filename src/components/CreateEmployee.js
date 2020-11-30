@@ -65,7 +65,7 @@ function CreateEmployee(props) {
             </div>
             <button onClick={() => createNewEmployee()} className="logoutbutton1">SUBMIT</button>
             <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>
-            <button className="button2 logoutbuttoncorner">LOGOUT</button>
+            <button onClick={() => props.logout()} className="button2 logoutbuttoncorner">LOGOUT</button>
 
 
         </div>

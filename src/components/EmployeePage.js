@@ -1,17 +1,30 @@
+import {useEffect} from "react"
+import EmployeeTask from "./employeeTask"
 
-
-function EmployeePage() {
+function EmployeePage(props) {
+    const { getTasks } = props
+    useEffect(() => {
+        getTasks()
+    },[getTasks])
 
     return (
-        <div className="Parent backgroundimage6 flexcolumn">
+        <div className="Parent backgroundimage5 flexcolumn">
             <div className="whitebackground">
-                <h1 className="welcomeemployee">WELCOME: EMPLOYEE</h1>
-                <ol className="orderedlist">
-                    <li>Task 1</li>
-                    <li>Task 2</li>
-                    <li>Task 3</li>
-                </ol>
-                <button className="logoutbuttoncorner button2">LOGOUT</button>
+                <h1 className="h1" >VIEW TASKS</h1>
+                <div>
+                    <div className="flexrow">
+                        <p className="width150 border">ID:</p>
+                        <p className="width200 border">NAME:</p>
+                        <p className="width150 border">DESCRIPTION:</p>
+                    </div>
+                    {props.tasks.map(task => {
+                    return <EmployeeTask markComplete={() => props.markComplete(task.id)} task={task} />
+                })}
+                    <div>
+                        <button onClick={() => props.logout()} className="button2 logoutbuttoncorner">LOGOUT</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

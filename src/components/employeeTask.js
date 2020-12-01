@@ -1,10 +1,10 @@
 import axios from "axios"
 
-function Task(props) {
+function EmployeeTask(props) {
 
-    const deleteTask = () => {
+    const markComplete = () => {
         var config = {
-            method: 'delete',
+            method: 'put',
             url: `https://black-bear-back-end.herokuapp.com/api/tasks/${props.task.id}`,
             headers: {
                 'Content-Type': 'application/json',
@@ -17,7 +17,7 @@ function Task(props) {
         axios(config)
             .then(function (response) {
                 console.log(response);
-                props.deleteTask()
+                props.markComplete()
 
             })
             .catch(function (e) {
@@ -33,16 +33,13 @@ function Task(props) {
             <p className="width150 border">{ props.task.id }</p>
             <p className="width200 border">{ props.task.name }</p>
             <p className="width150 border">{ props.task.description }</p>
-            <p className="width150 border">{ props.task.user_id }</p>
-            <button onClick={() => deleteTask()}>Delete</button>
+            <button onClick={() => markComplete()}>Completed</button>
             </>
         :
             <>
             <p style={{opacity: 0.6}} className="width150 border">{ props.task.id }</p>
             <p style={{opacity: 0.6}} className="width200 border">{ props.task.name }</p>
             <p style={{opacity: 0.6}} className="width150 border">{ props.task.description }</p>
-            <p style={{opacity: 0.6}} className="width150 border">{ props.task.user_id }</p>
-            <button onClick={() => deleteTask()}>Delete</button>
             </>
         }
         </div>
@@ -51,4 +48,4 @@ function Task(props) {
     );
 }
 
-export default Task;
+export default EmployeeTask;

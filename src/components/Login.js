@@ -36,6 +36,7 @@ function Login(props) {
             .then(function (response) {
                 console.log(response);
                 props.setLoggedIn(true)
+                props.setUser(response.data.user)
             })
             .catch(function (e) {
                 setError("wrong username or password")

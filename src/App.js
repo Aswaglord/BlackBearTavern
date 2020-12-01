@@ -18,10 +18,11 @@ function App() {
 
   const [employees, setEmployees] = useState([])
   const [tasks, setTasks] = useState([])
+  const [user, setUser] = useState({})
 
   const getEmployees = () => {
 
-    var config = {
+    let config = {
       method: 'get',
       url: 'https://black-bear-back-end.herokuapp.com/api/users',
       headers: {
@@ -48,15 +49,24 @@ function App() {
   }
 
   const getTasks = () => {
-
-    var config = {
-      method: 'get',
-      url: 'https://black-bear-back-end.herokuapp.com/api/tasks',
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': document.cookie
-      },
-    };
+    let config
+    if(user.position === "manager") {
+      config = {
+        method: 'get',
+        url: 'https://black-bear-back-end.herokuapp.com/api/tasks',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+    } else {
+      config = {
+        method: 'get',
+        url: `https://black-bear-back-end.herokuapp.com/api/tasks/user/${user.id}`,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+    }
     axios(config)
     .then(function (response) {
       console.log(response.data);
@@ -68,20 +78,35 @@ function App() {
 
   }
 
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  const markComplete = (id) => {
+    let newTasks = [...tasks]
+    for(const task of newTasks) {
+      if(task.id === id) {
+        task.completed = 1
+        setTasks(newTasks)
+        return
+      }
+    }
+  }
+
 
   return (
     <div className="App">
 
-      { !loggedIn ? <Login setLoggedIn={setLoggedIn} navigation={navigation} /> : null}
+      { !loggedIn ? <Login setUser={setUser} setLoggedIn={setLoggedIn} navigation={navigation} /> : null}
       
       
-      { loggedIn && page === "manager" ? <Manager logout={logout} navigation={navigation} /> : null}
-      { loggedIn && page === "employee page" ? <EmployeePage logout={logout} navigation={navigation} /> : null}
-      { loggedIn && page === "create employee" ? <CreateEmployee logout={logout} navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
-      { loggedIn && page === "current employees" ? <CurrentEmployees logout={logout} navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
-      { loggedIn && page === "modify tasks" ? <ModifyTasks logout={logout} navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
-      { loggedIn && page === "add task" ? <AddTasks logout={logout} navigation={navigation} /> : null}
+      { user.position === "manager" && page === "manager" ? <Manager logout={logout} navigation={navigation} /> : null}
+      { user.position === "manager" && page === "create employee" ? <CreateEmployee logout={logout} navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
+      { user.position === "manager" && page === "current employees" ? <CurrentEmployees logout={logout} navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
+      { user.position === "manager" && page === "modify tasks" ? <ModifyTasks deleteTask={deleteTask} logout={logout} navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
+      { user.position === "manager" && page === "add task" ? <AddTasks logout={logout} navigation={navigation} /> : null}
 
+      { user.position === "employee" ? <EmployeePage tasks={tasks} getTasks={getTasks} logout={logout} markComplete={markComplete} /> : null}
 
       { }
 

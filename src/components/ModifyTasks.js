@@ -3,9 +3,10 @@ import Task from "./Task";
 
 
 function ModifyTasks(props) {
+    const { getTasks } = props
     useEffect(() => {
-        props.getTasks()
-    })
+        getTasks()
+    },[getTasks])
 
 
     return (
@@ -20,7 +21,7 @@ function ModifyTasks(props) {
                         <p className="width150 border">USER ID:</p>
                     </div>
                     {props.tasks.map(task => {
-                    return <Task task={task} />
+                    return <Task deleteTask={() => props.deleteTask(task.id)} task={task} />
                 })}
                     <div>
                         <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>

@@ -42,41 +42,13 @@ function App() {
   }
   const logout = () => {
     setLoggedIn(false);
+    setPage("manager")
   }
 
   const navigation = (page) => {
     setPage(page)
   }
 
-  const getTasks = () => {
-    let config
-    if(user.position === "manager") {
-      config = {
-        method: 'get',
-        url: 'https://black-bear-back-end.herokuapp.com/api/tasks',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-    } else {
-      config = {
-        method: 'get',
-        url: `https://black-bear-back-end.herokuapp.com/api/tasks/user/${user.id}`,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
-    }
-    axios(config)
-    .then(function (response) {
-      console.log(response.data);
-      setTasks(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  }
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
@@ -103,10 +75,10 @@ function App() {
       { user.position === "manager" && page === "manager" ? <Manager logout={logout} navigation={navigation} /> : null}
       { user.position === "manager" && page === "create employee" ? <CreateEmployee logout={logout} navigation={navigation} employees={employees} setEmployees={setEmployees} /> : null}
       { user.position === "manager" && page === "current employees" ? <CurrentEmployees logout={logout} navigation={navigation} employees={employees} getEmployees={getEmployees} /> : null}
-      { user.position === "manager" && page === "modify tasks" ? <ModifyTasks deleteTask={deleteTask} logout={logout} navigation={navigation} tasks={tasks} getTasks={getTasks} /> : null}
+      { user.position === "manager" && page === "modify tasks" ? <ModifyTasks deleteTask={deleteTask} logout={logout} navigation={navigation} /> : null}
       { user.position === "manager" && page === "add task" ? <AddTasks logout={logout} navigation={navigation} /> : null}
 
-      { user.position === "employee" ? <EmployeePage tasks={tasks} getTasks={getTasks} logout={logout} markComplete={markComplete} /> : null}
+      { user.position === "employee" ? <EmployeePage id={user.id} logout={logout} markComplete={markComplete} /> : null}
 
       { }
 

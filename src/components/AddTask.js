@@ -35,6 +35,12 @@ function AddTasks(props) {
             .catch(function (error) {
                 console.log(error);
             });
+            
+        setNewTask({
+            name: "",
+            description: "",
+            user_id: "",
+        })
     }
 
     return (

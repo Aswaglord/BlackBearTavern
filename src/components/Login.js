@@ -59,7 +59,7 @@ function Login(props) {
 
                         <div className="textboxalign">
                             <label className="label">Password:</label>
-                            <input name="password" className="textbox" onChange={(e) => inputHandler(e)} value={form.password} />
+                            <input type="password" name="password" className="textbox" onChange={(e) => inputHandler(e)} value={form.password} />
                         </div>
                     </div>
                     <div>

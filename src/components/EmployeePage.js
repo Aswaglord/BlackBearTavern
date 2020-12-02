@@ -1,11 +1,39 @@
-import {useEffect} from "react"
+import { useEffect, useState } from "react"
 import EmployeeTask from "./employeeTask"
+import axios from "axios"
 
 function EmployeePage(props) {
-    const { getTasks } = props
+    const [tasks, setTasks] = useState([])
+    
     useEffect(() => {
-        getTasks()
-    },[getTasks])
+        console.log("hit")
+        let config = {
+            method: 'get',
+            url: `https://black-bear-back-end.herokuapp.com/api/tasks/user/${props.id}`,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        
+        axios(config)
+        .then(function (response) {
+            console.log(response.data);
+            setTasks(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    },[props])
+    const markComplete = (id) => {
+        let newTasks = [...tasks]
+        for (const task of newTasks) {
+            if (task.id === id) {
+                task.completed = 1
+                setTasks(newTasks)
+                return
+            }
+        }
+    }
 
     return (
         <div className="Parent backgroundimage5 flexcolumn">
@@ -17,9 +45,9 @@ function EmployeePage(props) {
                         <p className="width200 border">NAME:</p>
                         <p className="width150 border">DESCRIPTION:</p>
                     </div>
-                    {props.tasks.map(task => {
-                    return <EmployeeTask markComplete={() => props.markComplete(task.id)} task={task} />
-                })}
+                    {tasks.map(task => {
+                        return <EmployeeTask key={task.id} markComplete={() => markComplete(task.id)} task={task} />
+                    })}
                     <div>
                         <button onClick={() => props.logout()} className="button2 logoutbuttoncorner">LOGOUT</button>
                     </div>

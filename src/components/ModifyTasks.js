@@ -1,12 +1,33 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Task from "./Task";
+import axios from "axios"
 
 
 function ModifyTasks(props) {
-    const { getTasks } = props
+    const [tasks, setTasks] = useState([])
+    
     useEffect(() => {
-        getTasks()
-    },[getTasks])
+        console.log("hit")
+        let config = {
+            method: 'get',
+            url: 'https://black-bear-back-end.herokuapp.com/api/tasks',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        };
+        
+        axios(config)
+        .then(function (response) {
+            console.log(response.data);
+            setTasks(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    },[])
+    const deleteTask = (id) => {
+        setTasks(tasks.filter((task) => task.id !== id))
+      }
 
 
     return (
@@ -20,8 +41,8 @@ function ModifyTasks(props) {
                         <p className="width150 border">DESCRIPTION:</p>
                         <p className="width150 border">USER ID:</p>
                     </div>
-                    {props.tasks.map(task => {
-                    return <Task deleteTask={() => props.deleteTask(task.id)} task={task} />
+                    {tasks.map(task => {
+                    return <Task key={task.id} deleteTask={() => deleteTask(task.id)} task={task} />
                 })}
                     <div>
                         <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>

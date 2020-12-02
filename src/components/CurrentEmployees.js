@@ -1,12 +1,28 @@
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Employee from "./Employee"
+import axios from "axios"
 
 function CurrentEmployees(props) {
-
+    const [employees, setEmployees] = useState([])
     useEffect(() => {
-        props.getEmployees()
-    })
+        let config = {
+            method: 'get',
+            url: 'https://black-bear-back-end.herokuapp.com/api/users',
+            headers: {
+              'Content-Type': 'application/json',
+              'Cookie': document.cookie
+            },
+          };
+          axios(config)
+          .then(function (response) {
+            console.log(response.data);
+            setEmployees(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    },[])
 
 
     return (
@@ -21,8 +37,8 @@ function CurrentEmployees(props) {
                         <p className="width100 border">FIRST NAME:</p>
                         <p className="width100 border">POSITION:</p>
                     </div>
-                {props.employees.map(employee => {
-                    return <Employee person={employee} />
+                {employees.map(employee => {
+                    return <Employee key={employee.id} person={employee} />
                 })}
                 </div>
                 <button onClick={() => props.navigation("manager")} className="logoutbutton1">RETURN</button>

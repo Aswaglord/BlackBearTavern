@@ -40,6 +40,12 @@ function CreateEmployee(props) {
             .catch(function (error) {
                 console.log(error);
             });
+        setNewEmployee({
+            first_name: "",
+            last_name: "",
+            position: "",
+            username: ""
+        })
     }
 
     return (

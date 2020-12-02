@@ -12,7 +12,7 @@ function Manager(props) {
             </div>
 
             <div className="logoutbuttoncorner">
-                <button className="button2">LOGOUT</button>
+                <button onClick={() => props.logout()} className="button2">LOGOUT</button>
             </div>
         </div>
 

@@ -26,8 +26,8 @@ Usage:
 -Employe: from this screen an employee can view any task that is currently assigned to them and they can check them off once completed. This is as of now all they can do on this screen.
 
 Acknowledgment: 
-Cory Rhodes - Project Manager
-Dalian Breen - Scrum Master 
+Cori Rhodes - Project Manager
+Dallin Breen - Scrum Master 
 Andrew Blonquist - Software Architect 
-Alexander Speranza - Test Guy
+Alexander Speranza - Quality Assurance
 And a special thanks to Lindsy, our sponsor, for all her help making this project feel at home in the Black Bear Tavern.

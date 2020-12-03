@@ -11,7 +11,7 @@ Installation: there is no installation required for this, its all on the web rea
 
 Usage: 
 
--Login screen: this is the first page you will be brought to when entering this application, at this screen you will enter your user ID and password to log on your username is given to you when your manager creates your profile. 
+-Login screen: this is the first page you will be brought to when entering this application, at this screen you will enter your user ID and password to log on your username is given to you when your manager creates your profile. (If you want to test as manager... Username is: testAdmin and Password is: password)
 
 -Management: if you signed in as a manger you will be brought to the manger welcome screen here you will have 3 choices:
 
@@ -25,9 +25,9 @@ Usage:
 
 -Employe: from this screen an employee can view any task that is currently assigned to them and they can check them off once completed. This is as of now all they can do on this screen.
 
-Acknowledgment: 
+Acknowledgments: 
 Cori Rhodes - Project Manager
-Dallin Breen - Scrum Master 
+Dallin M Breen - Scrum Master 
 Andrew Blonquist - Software Architect 
 Alexander Speranza - Quality Assurance
 And a special thanks to Lindsy, our sponsor, for all her help making this project feel at home in the Black Bear Tavern.

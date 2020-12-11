@@ -11,11 +11,13 @@ Installation: there is no installation required for this, its all on the web rea
 
 Usage: 
 
--Login screen: this is the first page you will be brought to when entering this application, at this screen you will enter your user ID and password to log on your username is given to you when your manager creates your profile. (If you want to test as manager... Username is: testAdmin and Password is: password)
+-Login screen: this is the first page you will be brought to when entering this application, at this screen you will enter your user ID and password to log on your username is given to you when your manager creates your profile. 
+(If you want to test as manager... Username is: testAdmin and Password is: password)
+(If you want to test as an employee... Username is testUser and Password is: password) 
 
--Management: if you signed in as a manger you will be brought to the manger welcome screen here you will have 3 choices:
+-Management: if you signed in as a manger you will be brought to the manager welcome screen here you will have 3 choices:
 
-- Add employee: clicking this button will bring you to the add employee screen, where you can enter in new employees, you will need to enter their name first and last, as well as what position you are hiring them for. You will also create their password and username here. For the user name it is best to use something easy like their first name with their last name’s first letter, exp JohnD. Once finished hit the submit button to save or the return button to leave without saving.
+- Add employee: clicking this button will bring you to the add employee screen, where you can enter in new employees, you will need to enter their name first and last, as well as what position you are hiring them for. You will also create their password and username here. For the username, it is best to use something easy like their first name with their last name’s first letter, exp JohnD. Once finished hit the submit button to save or the return button to leave without saving.
 
 - View employee: Is for looking at employees you have already hired. you can find ou what user name they have and what tasks they have been assigned.
 
@@ -23,11 +25,11 @@ Usage:
 
 -Add Task: The Add Task button will take you to a new page where you can assign new tasks to your employees. You will need to fill out three fields: the first is the user ID of the person you want to give the task to, the second is the task name and the final field is for you to leave a discretion of the task and how you want it done.
 
--Employe: from this screen an employee can view any task that is currently assigned to them and they can check them off once completed. This is as of now all they can do on this screen.
+-Employee: from this screen an employee can view any task that is currently assigned to them and they can check them off once completed. This is as of now all they can do on this screen.
 
 Acknowledgments: 
 Cori Rhodes - Project Manager
 Dallin M Breen - Scrum Master 
 Andrew Blonquist - Software Architect 
 Alexander Speranza - Quality Assurance
-And a special thanks to Lindsy, our sponsor, for all her help making this project feel at home in the Black Bear Tavern.
+And a special thanks to Lindsey, our sponsor, for all her help making this project feel at home in the Black Bear Tavern.
